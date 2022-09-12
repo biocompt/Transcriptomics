@@ -34,3 +34,11 @@ set2 <- batchRemoval[[3]]
 ```
 
 ## Factorize the data
+Preferably, we should factorize those columns that can be factorized, with the phenotype column changing the 
+
+```
+dds <- DESeqDataSetFromMatrix(countData = counts(set2),
+                              colData = covs,
+                              design = ~ W1 + W2 + W3 + covs + Pheno)
+dds$Pheno <- relevel(dds$Pheno, ref = "Control")
+```
