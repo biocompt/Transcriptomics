@@ -34,13 +34,29 @@ set2 <- batchRemoval[[3]]
 ```
 
 ## DESeq object
-1. **countData**. We specified the normalized counts after applying RUV with the command counts().
+1. **countData**. We specified the normalized counts after applying RUV with the command `counts()`.
 2. **colData**. We specified the dataframe with the phenotype and the covariables of our study. It is recommendable to factorize those that can be factorize before create the DESeq object, although they will be factorize if we did not do it.
 3. **design**. We specify the columns to run the differential expression analysis, putting the one that we want to analyze as the last one. In the RUV normalization we set the *empirical (k)* as 3, so we have to add to the design formula the 3 factors that accounts for the effects.
-
 ```
 dds <- DESeqDataSetFromMatrix(countData = counts(set2),
                               colData = covs,
                               design = ~ W_1 + W_2 + W_3 + covs + Pheno)
 dds$Pheno <- relevel(dds$Pheno, ref = "Control")
+```
+
+## DE analysis
+Once the DESeq object is created, we can filtered by removing all the genes/transcripts that have no counts or that not passed a minimun number of counts. These filters should be adapted to our data. These filter will allow us to increase the speed of our analysis.
+```
+ds <- estimateSizeFactors(dds)
+keep <- rowSums(counts(ds, normalized=T) >= nlect) >= npat
+ds <- ds[keep,]
+```
+Once we have filtered the low counts, we can run the analysis.
+```
+cds <- DESeq(ds, parallel = T)
+```
+We can extract the results and store it as dataframe. 
+```
+res <- na.omit(data.frame(results(cds, contrast = c("Pheno", "Case", "Control"), alpha = 0.05)))
+res <- res[order(res$padj),]
 ```
