@@ -24,3 +24,13 @@ pheno <- subset(pheno, rownames(pheno) %in% samples)
 counts <- counts[, rownames(pheno)]
 all(rownames(pheno) == colnames(counts))
 ```
+
+## Normalization of data
+It is recommendable to remove unwanted variation to improve our analysis. In our analysis, we have applied RUVSeq to our data.
+```
+RUVgApply <- function(DESEQcounts, controls, cases)
+batchRemoval <- RUVgApply(readCounts, CONTROLS, CASES)  
+set2 <- batchRemoval[[3]]
+```
+
+## Factorize the data
