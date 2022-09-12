@@ -60,3 +60,25 @@ We can extract the results and store it as dataframe.
 res <- na.omit(data.frame(results(cds, contrast = c("Pheno", "Case", "Control"), alpha = 0.05)))
 res <- res[order(res$padj),]
 ```
+
+## Plot the results
+
+### Counts plot
+DESeq has inserted a function 
+
+
+
+padj<-read.delim("sinCOV_caseVScontrol.tsv",sep = "\t",header = TRUE, na.strings = "NA", dec = ".")
+rownames(padj)<-padj$X
+EnhancedVolcano(padj,
+                lab = "",
+                x = 'log2FoldChange',
+                y = 'pvalue',
+                title = 'Volcano plot - CaCo',
+                ylab = bquote(~-Log[10] ''~italic(P)~'-value'),
+                xlab = bquote(~Log[2] italic('fold change')),
+                pointSize = 1.0,
+                gridlines.minor = FALSE,
+                col = c('gray', 'skyblue', 'pink1', 'purple'),
+                pCutoff = 5.5e-2)
+rm(list=ls())
