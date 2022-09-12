@@ -9,10 +9,18 @@ library(DESeq2)
 library(RUVSeq)
 ```
 
-## The variables
+## Data
 One of the key points of writing a script is the possibility to reutilice it for different analysis without changing many things. Because of that, here we designate different variables that can allow us to work with our data:
 
 ```
-pheno <- Here we indicate the name of the phenotype that we are analyzing. It is recommendable to set the same name that the file that we want to upload.
-counts <- HTSEQ/RSEM. Here we specify the tool that we have used to extract the counts. HTSEQ is to map counts to Genes, while RSEM is to extract transcripts.
+pheno <- read.table() of the pheno data.
+counts <- read.table() of the count data.
+```
+One of the requirements of DESeq2 is to order the sample data in the same way in both files (pheno and counts). Sometimes, both files have different order so we have to re-order it.
+
+```
+samples <- colnames(counts)
+pheno <- subset(pheno, rownames(pheno) %in% samples)
+counts <- counts[, rownames(pheno)]
+all(rownames(pheno) == colnames(counts))
 ```
