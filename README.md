@@ -8,3 +8,11 @@ We have used DESeq2 package (https://doi.org/doi:10.18129/B9.bioc.DESeq2), the m
 library(DESeq2)
 library(RUVSeq)
 ```
+
+## The variables
+One of the key points of writing a script is the possibility to reutilice it for different analysis without changing many things. Because of that, here we designate different variables that can allow us to work with our data:
+
+``
+pheno <- Here we indicate the name of the phenotype that we are analyzing. It is recommendable to set the same name that the file that we want to upload.
+counts <- HTSEQ/RSEM. Here we specify the tool that we have used to extract the counts. HTSEQ is to map counts to Genes, while RSEM is to extract transcripts.
+```
