@@ -34,15 +34,13 @@ set2 <- batchRemoval[[3]]
 ```
 
 ## DESeq object
-To run the differential expression analysis, we need to create the DESeq object where we specify what our counts are, the phenotype data, and the design of our analysis. Due to normalization, we indicate in countData the normalized counts of the set2 object. In colData, we have to specify the data frame with our phenotype and covariates. It is advisable to factor those that can be factored. Finally, in the design we specify the effect factors (W_1, W_2 and W_3 in our case because our k = 3).
-
-1. Prueba 1
-2. Prueba 2
-3. Prueba 3
+1. **countData**. We specified the normalized counts after applying RUV with the command counts().
+2. **colData**. We specified the dataframe with the phenotype and the covariables of our study. It is recommendable to factorize those that can be factorize before create the DESeq object, although they will be factorize if we did not do it.
+3. **design**. We specify the columns to run the differential expression analysis, putting the one that we want to analyze as the last one. In the RUV normalization we set the *empirical (k)* as 3, so we have to add to the design formula the 3 factors that accounts for the effects.
 
 ```
 dds <- DESeqDataSetFromMatrix(countData = counts(set2),
                               colData = covs,
-                              design = ~ W1 + W2 + W3 + covs + Pheno)
+                              design = ~ W_1 + W_2 + W_3 + covs + Pheno)
 dds$Pheno <- relevel(dds$Pheno, ref = "Control")
 ```
