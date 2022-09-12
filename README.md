@@ -26,16 +26,15 @@ all(rownames(pheno) == colnames(counts))
 ```
 
 ## Normalization of data
-It is recommendable to remove unwanted variation to improve our analysis. In our analysis, we have applied RUVSeq to our data.
+It is recommendable to remove unwanted variation (batch, library preparation, and other nuisance) to improve our analysis.
 ```
 RUVgApply <- function(DESEQcounts, controls, cases)
-batchRemoval <- RUVgApply(readCounts, CONTROLS, CASES)  
+batchRemoval <- RUVgApply(counts, CONTROLS, CASES)  
 set2 <- batchRemoval[[3]]
 ```
 
-## Factorize the data
-Preferably, we should factorize those columns that can be factorized, with the phenotype column changing the 
-
+## DESeq object
+To run the differential expression analysis, we need to create the DESeq object where we specify what our counts are, the phenotype data, and the design of our analysis. Due to normalization, we indicate in countData the normalized counts of the set2 object. In colData, we have to specify the data frame with our phenotype and covariates. It is advisable to factor those that can be factored. Finally, in the design we specify the effect factors (W_1, W_2 and W_3 in our case because our k = 3).
 ```
 dds <- DESeqDataSetFromMatrix(countData = counts(set2),
                               colData = covs,
