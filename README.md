@@ -64,21 +64,11 @@ res <- res[order(res$padj),]
 ## Plot the results
 
 ### Counts plot
-DESeq has inserted a function 
+DESeq has a function that allowed us to plot counts in each of the groups that we want to compare, to see if there are a particular distribution in each one.
+```
+plotCounts(cds, gene = "Gene_name", intgroup = "Pheno")
+```
 
+### Volcano plot
 
-
-padj<-read.delim("sinCOV_caseVScontrol.tsv",sep = "\t",header = TRUE, na.strings = "NA", dec = ".")
-rownames(padj)<-padj$X
-EnhancedVolcano(padj,
-                lab = "",
-                x = 'log2FoldChange',
-                y = 'pvalue',
-                title = 'Volcano plot - CaCo',
-                ylab = bquote(~-Log[10] ''~italic(P)~'-value'),
-                xlab = bquote(~Log[2] italic('fold change')),
-                pointSize = 1.0,
-                gridlines.minor = FALSE,
-                col = c('gray', 'skyblue', 'pink1', 'purple'),
-                pCutoff = 5.5e-2)
-rm(list=ls())
+### Heatmap
