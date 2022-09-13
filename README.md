@@ -75,6 +75,9 @@ DESeq has a function that allowed us to plot counts in each of the groups that w
 ```
 plotCounts(cds, gene = "Gene_name", intgroup = "Pheno")
 ```
+<p align="center">
+  <img src="https://biocorecrg.github.io/PHINDaccess_RNAseq_2020/images/counts_foxc1.png">
+</p>
 
 ### PCA
 PCA can show differences between the groups that we want to compare.
