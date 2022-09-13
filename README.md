@@ -90,4 +90,6 @@ plotPCA(vsd, intgroup="Pheno")
 pheatmap(assay(vsd)[select,], cluster_rows=T, show_rownames=F,
          cluster_cols=T, annotation_col=groups)
 ```
-![Heatmap_DESEq2](https://i.ibb.co/DLkYDF3/Biostar-heatmap.png)
+<p align="center">
+  <img width="460" height="300" src="https://i.ibb.co/DLkYDF3/Biostar-heatmap.png">
+</p>
