@@ -97,7 +97,7 @@ EnhancedVolcano(res,
                 pCutoff = 5.5e-2)
 ```
 <p align="center">
-  <img width="460" height="300" src="https://image.ibb.co/kYOViG/volcano.png">
+  <img src="https://image.ibb.co/kYOViG/volcano.png">
 </p>
 
 ### Heatmap
@@ -106,5 +106,5 @@ pheatmap(assay(vsd)[select,], cluster_rows=T, show_rownames=F,
          cluster_cols=T, annotation_col=groups)
 ```
 <p align="center">
-  <img width="460" height="300" src="https://i.ibb.co/DLkYDF3/Biostar-heatmap.png">
+  <img src="https://i.ibb.co/DLkYDF3/Biostar-heatmap.png">
 </p>
