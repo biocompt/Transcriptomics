@@ -81,7 +81,7 @@ PCA can show differences between the groups that we want to compare.
 ```
 plotPCA(vsd, intgroup="Pheno")
 ```
-![Counts' PCA] (https://i.stack.imgur.com/txw4G.png)
+![Counts' PCA](https://i.stack.imgur.com/txw4G.png)
 ### Volcano plot
 
 
