@@ -83,7 +83,22 @@ plotPCA(vsd, intgroup="Pheno")
 ```
 ![Counts' PCA](https://i.stack.imgur.com/txw4G.png)
 ### Volcano plot
-
+```
+EnhancedVolcano(res,
+                lab = "",
+                x = 'log2FoldChange',
+                y = 'pvalue',
+                title = 'Volcano plot of RNA-Seq',
+                ylab = bquote(~-Log[10] ''~italic(P)~'-value'),
+                xlab = bquote(~Log[2] italic('fold change')),
+                pointSize = 1.0,
+                gridlines.minor = FALSE,
+                col = c('gray', 'skyblue', 'pink1', 'purple'),
+                pCutoff = 5.5e-2)
+```
+<p align="center">
+  <img width="460" height="300" src="https://image.ibb.co/kYOViG/volcano.png">
+</p>
 
 ### Heatmap
 ```
