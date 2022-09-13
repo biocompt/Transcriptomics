@@ -90,4 +90,4 @@ plotPCA(vsd, intgroup="Pheno")
 pheatmap(assay(vsd)[select,], cluster_rows=T, show_rownames=F,
          cluster_cols=T, annotation_col=groups)
 ```
-![Heatmap_DESEq2](plotPCA(vsd, intgroup="Pheno")
+![Heatmap_DESEq2](https://bioinformatics.stackexchange.com/questions/13976/rnaseq-biological-replicates-not-clustering-in-pca-plots)
