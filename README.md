@@ -111,25 +111,3 @@ pheatmap(assay(vsd)[select,], cluster_rows=T, show_rownames=F,
 <p align="center">
   <img src="https://i.ibb.co/DLkYDF3/Biostar-heatmap.png">
 </p>
-
-```
-res <- results(cds, contrast = c("Pheno", "Condition 1", "Condition 2"), alpha = 0.05)
-W <- res$stat
-m <- ncol(dds)
-p <- 3
-
-par(mfrow=c(2,2),mar=c(2,2,1,1))
-plotDispEsts(cds)
-plot(rank(W[idx]), maxCooks[idx], xlab="rank of Wald statistic", 
-          ylab="maximum Cook's distance per gene",
-          ylim=c(0,5), cex=.4, col=rgb(0,0,0,.3))
-
-abline(h=qf(.99, p, m - p))
-
-boxplot(log10(assays(cds)[["cooks"]]), range=0, las=2)
-plot(metadata(res)$filterNumRej, 
-     type="b", ylab="number of rejections",
-     xlab="quantiles of filter")
-lines(metadata(res)$lo.fit, col="red")
-abline(v=metadata(res)$filterTheta)
-```
